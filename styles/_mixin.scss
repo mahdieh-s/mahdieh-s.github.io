@@ -1,0 +1,82 @@
+@mixin parent-width() {
+  width: 100%;
+  min-height: 80vh;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 16 * $spacer;
+  padding-right: 16 * $spacer;
+}
+
+@mixin about-h2() {
+  color: $text_primary_color;
+  font-size: 4 * $spacer;
+  font-weight: 700;
+  line-height: 1.13;
+  margin-bottom: 5 * $spacer;
+  padding-top: 64px;
+  text-transform: uppercase;
+  text-align: center;
+  position: relative;
+
+  &::after {
+    content: "";
+    display: block;
+    background-color: $bg_primary_color;
+    width: 9 * $spacer;
+    height: 3px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -2 * $spacer;
+    margin: auto;
+  }
+}
+
+@mixin skills-progress-bar($width-progress: 100%) {
+  .wrapper-progressbar {
+    display: block;
+    width: 100%;
+    // margin-bottom: 3* $spacer;
+  }
+
+  .progressbar {
+    width: 100%;
+    background-color: rgb(238, 238, 238);
+    position: relative;
+  }
+
+  .progress {
+    width: $width-progress;
+    height: 3 * $spacer;
+    background-color: $bg_primary_color;
+  }
+
+  .percentage {
+    position: absolute;
+    top: 0;
+    left: 48%;
+    color: $text_secondary_color;
+  }
+}
+
+@mixin progress-animation($Secondary-width) {
+  .progress {
+    animation: progress-animation 4s linear;
+  }
+  @keyframes progress-animation {
+    from {
+      width: 0;
+    }
+    to {
+      width: $Secondary-width;
+    }
+  }
+}
+
+@mixin skill-name {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 2 * $spacer;
+  font-weight: 700;
+  color: $text_third_color;
+}

@@ -1,0 +1,594 @@
+// <---------- 1 ---------->
+.first-section {
+  background-color: $bg_primary_color;
+  @include parent-width;
+  position: relative;
+}
+
+// <!-- start header -->
+.header {
+  position: fixed;
+  background-color: $bg_primary_color;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 16 * $spacer;
+  padding-right: 16 * $spacer;
+}
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 3 * $spacer;
+  padding-bottom: 3 * $spacer;
+
+  & > a {
+    color: $text_secondary_color;
+    font-size: 35px;
+    font-family: $secondary_font_family;
+  }
+}
+.navigation-list {
+  padding: 0 2 * $spacer;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  & a {
+    color: $text_secondary_color;
+  }
+
+  & > li {
+    font-size: 15px;
+    font-weight: 400;
+    margin: $spacer 2 * $spacer;
+    text-transform: uppercase;
+    position: relative;
+  }
+
+  & > li ::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: $text_secondary_color;
+    position: absolute;
+    bottom: -4px;
+    right: 0;
+    left: 0;
+    transform: scaleX(0);
+    transition: transform 0.4s;
+  }
+
+  & > li :hover::after {
+    transform: scaleX(1);
+  }
+}
+.toggle-button-label {
+  display: inline-block;
+  width: 25px;
+  height: 17px;
+  position: relative;
+  margin-left: auto;
+  margin-top: 20px;
+  z-index: 100;
+}
+
+.toggle-button-label > span,
+.toggle-button-label::after,
+.toggle-button-label::before {
+  display: inline-block;
+  width: 100%;
+  height: 3px;
+  background-color: #fff;
+  position: absolute;
+  left: 0;
+  right: 0;
+  transition: 0.4s;
+}
+
+.toggle-button-label::after,
+.toggle-button-label::before {
+  content: "";
+}
+.toggle-button-label::after {
+  bottom: 0;
+}
+
+.toggle-button-label > span {
+  top: 0;
+}
+
+.toggle-button-label::before {
+  top: calc(50% - 1.5px);
+}
+#toggle-button {
+	display: none;
+	opacity: 0;
+}
+
+// <!-- end header -->
+// <!-- start primary introduction -->
+.primary-introduction {
+  width: 100%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20 * $spacer;
+  padding-bottom: 20 * $spacer;
+  padding-left: 6 * $spacer;
+  padding-right: 6 * $spacer;
+
+  & > figure {
+    min-width: 50%;
+
+    & > img {
+      width: 90%;
+      height: 90%;
+      border-radius: 50%;
+    }
+  }
+
+  & > article {
+    min-width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    > h1 {
+      font-size: 60px;
+      font-family: $secondary_font_family;
+      color: $text_secondary_color;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    & h2 {
+      color: $text_secondary_color;
+    }
+    > button {
+      display: inline-block;
+      border: 2px solid $text_secondary_color;
+      border-radius: 4px;
+      background-color: transparent;
+      color: $text_secondary_color;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      padding: 2 * $spacer 3 * $spacer;
+      margin-top: 4 * $spacer;
+      width: 45%;
+      transition: all 0.5s;
+    }
+    > button:hover {
+      background-color: $text_secondary_color;
+      color: $bg_primary_color;
+      cursor: pointer;
+    }
+  }
+}
+
+.typing-container {
+  position: relative;
+  display: inline-block;
+}
+.text {
+  overflow: hidden;
+  height: 36px;
+  animation: typing 3s steps(30) infinite;
+}
+.text::after {
+  display: block;
+  content: "";
+  height: 30px;
+  width: 3px;
+  background-color: $text_secondary_color;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  right: 0;
+  bottom: 0;
+  animation: blink 0.4s ease-in infinite alternate;
+}
+
+@keyframes blink {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+// <!-- end primary introduction-->
+// <---------- 2 ---------->
+
+.second-section {
+  background-color: $bg_secondary_color;
+  @include parent-width;
+}
+
+// <!-- start brief explanation -->
+
+.section-title {
+  @include about-h2;
+}
+
+.brief-explanation {
+  & > p {
+    text-align: center;
+  }
+}
+
+// <!-- end brief explanation -->
+
+// <!-- start about skills -->
+
+.about-skills {
+  background-color: $text_secondary_color;
+  margin-top: 9 * $spacer;
+  display: flex;
+}
+
+.about-skills-pic {
+  width: 50%;
+  margin-bottom: 9 * $spacer;
+  & > img {
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}
+.skills-social-button {
+  width: 50%;
+  padding-left: 2 * $spacer;
+  padding-right: 2 * $spacer;
+  display: flex;
+  flex-direction: column;
+  & h3 {
+    font-size: 3 * $spacer;
+    font-weight: 700;
+    padding-bottom: 2 * $spacer;
+    padding-top: 2 * $spacer;
+  }
+
+  & .skill-name {
+    @include skill-name;
+  }
+}
+
+.html {
+  @include skills-progress-bar(95%);
+  @include progress-animation(95%);
+}
+.css {
+  @include skills-progress-bar(80%);
+  @include progress-animation(80%);
+}
+.javascript {
+  @include skills-progress-bar(65%);
+  @include progress-animation(65%);
+}
+
+.icon {
+  border-radius: 50%;
+  display: inline-flex;
+  font-size: 2 * $spacer;
+  border: 1px solid #333;
+  width: 5 * $spacer;
+  height: 5 * $spacer;
+  line-height: 4 * $spacer;
+  text-align: center;
+  padding: 5px 5px;
+  transition: all 0.5s;
+  color: #2f2f2f;
+  background-color: transparent;
+  justify-content: center;
+  align-items: center;
+  margin: 0 5px;
+}
+
+.icon:hover {
+  border-color: $bg_primary_color;
+  color: $bg_primary_color;
+}
+
+.resume-button {
+  margin-top: 4 * $spacer;
+  display: inline-block;
+  padding: 2 * $spacer 3 * $spacer;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  transition: all 0.5s;
+  border: 2px solid #339999;
+  color: #339999;
+  background-color: $text_secondary_color;
+  width: 45%;
+  cursor: pointer;
+}
+.resume-button:hover {
+  background-color: $bg_primary_color;
+  color: $text_secondary_color;
+}
+
+// <!-- end about skills -->
+// <---------- 3 ---------->
+.third-section {
+  background-color: $bg_secondary_color;
+  @include parent-width;
+}
+.portfolio-container {
+  max-width: 1170px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-gap: 2 * $spacer;
+  padding-top: 8 * $spacer;
+  position: relative;
+  & img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.portfolio-wrapper {
+  position: relative;
+}
+.overlay {
+  position: absolute;
+  left: 16px;
+  top: 16px;
+  right: 16px;
+  bottom: 16px;
+  padding-top: 25%;
+  text-align: center;
+  transition: 0.5s ease;
+  color: #fff;
+  background-color: #339999;
+  opacity: 0;
+}
+.portfolio-wrapper:hover .overlay {
+  opacity: 1;
+}
+.overlay-icon {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: #1b1c29;
+  color: $text_secondary_color;
+  height: 35px;
+  width: 35px;
+  line-height: 35px;
+  margin-top: 5px;
+  font-size: 16px;
+  transition: all 0.5s;
+}
+.overlay-icon:hover {
+  background-color: $text_secondary_color;
+  color: $bg_primary_color;
+}
+// <---------- 4 ---------->
+
+.forth-section {
+  background-color: $bg_secondary_color;
+  @include parent-width;
+  padding-top: 4 * $spacer;
+}
+
+.testimonials-container {
+  max-width: 1170px;
+  margin: auto;
+  padding: 4 * $spacer 2 * $spacer;
+}
+.testimonials-item {
+  background-color: #888;
+  padding: 4 * $spacer;
+  border-radius: 30px;
+}
+.testimonials-item .info {
+  display: flex;
+  align-items: center;
+}
+.testimonials-item img {
+  max-width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  margin-right: 3 * $spacer;
+  vertical-align: middle;
+}
+.testimonials-item .name {
+  font-size: 24px;
+  text-transform: capitalize;
+  font-weight: 600;
+  line-height: 1.2;
+}
+.testimonials-item .job {
+  text-transform: capitalize;
+}
+.testimonials-item p {
+  margin-top: 3 * $spacer;
+}
+.testimonials-item .rating {
+  margin-top: 2 * $spacer;
+  font-size: 14px;
+  color: #ecb317;
+}
+.forth-section .swiper-pagination {
+  position: relative;
+  margin-top: 40px;
+  bottom: auto;
+}
+.forth-section .swiper-pagination-bullet {
+  height: 12px;
+  width: 12px;
+  background-color: $text_third_color;
+}
+
+// <---------- 5 ---------->
+
+.fifth-section {
+  background-color: $bg_secondary_color;
+  @include parent-width;
+}
+.contact-container {
+  display: inline-block;
+  width: 100%;
+}
+.contact-wrapper {
+  margin-bottom: 2 * $spacer;
+  width: 80%;
+  margin: 0 auto;
+}
+.data {
+  background: transparent;
+  border-radius: 4px;
+  color: #333;
+  font-size: 15px;
+  border: 1px solid #888;
+  height: 45px;
+  margin-bottom: 24px;
+  display: block;
+  width: 100%;
+  padding: 6px 12px;
+  box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+
+.submit-button {
+  display: block;
+  border-radius: 4px;
+  border: 1px solid #888;
+  background-color: transparent;
+  color: #555;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-align: center;
+  padding: 14px 24px;
+  // margin-top: 10px;
+  transition: all 0.5s;
+  width: 130px;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 1024px) {
+  .text::after {
+    left: 75%;
+  }
+
+  .portfolio-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .navigation-list {
+    position: fixed;
+    width: 100vw;
+    height: 50vh;
+    background-color: #0c0b0bd2;
+    top: -50vh;
+    right: 0;
+    bottom: 0;
+    z-index: 99;
+    display: block;
+    text-align: center;
+    padding-top: 4 * $spacer;
+    & > li {
+      margin-top: 2 * $spacer;
+      margin-bottom: 2 * $spacer;
+    }
+    & > li ::after {
+      display: none;
+      padding: 100px 20px 20px;
+    }
+  }
+  #toggle-button:checked ~ .navigation-list {
+    top: 70px;
+  }
+
+  #toggle-button:checked + .toggle-button-label::before {
+    opacity: 0;
+  }
+
+  #toggle-button:checked + .toggle-button-label > span {
+    transform: rotate(45deg) translate(5px, 10px);
+  }
+  #toggle-button:checked + .toggle-button-label::after {
+    transform: rotate(-45deg) translateY(-5px);
+  }
+
+  #toggle-button:checked ~ .navigation-list::after {
+    transform: translateX(0);
+  }
+}
+@media screen and (min-width: 1204px) {
+  .toggle-button-label {
+    display: none;
+  }
+}
+@media screen and (max-width: 768px) {
+  .primary-introduction {
+    display: flex;
+    flex-wrap: wrap;
+    & > * {
+      width: 100%;
+    }
+  }
+  .about-skills {
+    display: flex;
+    flex-wrap: wrap;
+    & > * {
+      width: 100%;
+    }
+  }
+  .info {
+    display: flex;
+    flex-wrap: wrap;
+    & * {
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .first-section {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .second-section {
+    padding-left: $spacer;
+    padding-right: $spacer;
+  }
+  .third-section {
+    padding-left: $spacer;
+    padding-right: $spacer;
+    .portfolio-container {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+  .forth-section {
+    padding-left: $spacer;
+    padding-right: $spacer;
+  }
+  .fifth-section {
+    padding-left: $spacer;
+    padding-right: $spacer;
+  }
+}
